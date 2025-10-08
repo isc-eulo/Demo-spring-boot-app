@@ -4,6 +4,12 @@ services:
   app:
     build: .
     ports:
-      - "8080:8080"
+      - "9091:9091"  # Mapea 9091 host a 9091 container
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
