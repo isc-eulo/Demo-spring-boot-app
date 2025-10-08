@@ -107,26 +107,35 @@
     </dependency>
   </dependencies>
 
-  <build>
+<build>
     <plugins>
         <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             <version>${spring.boot.version}</version>
+            <executions>
+                <execution>
+                    <id>repackage</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
             <configuration>
                 <mainClass>com.example.demo.DemoApplication</mainClass>
+                <classifier>exec</classifier>
             </configuration>
         </plugin>
-        
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-        </configuration>
-      </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
     </plugins>
-  </build>
+</build>
 </project>
